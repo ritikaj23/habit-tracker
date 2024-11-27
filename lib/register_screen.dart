@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
+import 'habit_tracker_screen.dart';
 import 'login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -57,9 +59,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
     });
   }
 
+  void _showToast(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
+
   void _register() async {
-    // dummy for now
-    print("registration logic here");
+    final name = _nameController.text;
+    final username = _usernameController.text;
+
+    if (username.isEmpty || name.isEmpty) {
+      _showToast('Please fill in all fields');
+      return;
+    }
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HabitTrackerScreen(username: username),
+      ),
+    );
   }
 
   @override
