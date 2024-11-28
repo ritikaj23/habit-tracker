@@ -182,16 +182,17 @@ class _HabitTrackerScreenState extends State<HabitTrackerScreen> {
       ),
       floatingActionButton: selectedHabitsMap.isEmpty
           ? FloatingActionButton(
+            
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AddHabitScreen(),
-                  ),
-                ).then((_) {
-                  // _loadUserData(); // Reload data after returning
-                });
-              },
+  print('Floating button pressed');
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => AddHabitScreen(),
+    ),
+  );
+},
+
               child: Icon(Icons.add),
               backgroundColor: Colors.blue.shade700,
               tooltip: 'Add Habits',
